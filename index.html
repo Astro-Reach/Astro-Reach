@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AstroReach | Global Student Astronomy Initiative</title>
+    <meta name="description" content="Student-run astronomy organization providing free space science curriculum, coding-based projects, and research opportunities to students worldwide.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00d9ff;
+            --secondary: #8b5cf6;
+            --accent: #fbbf24;
+            --bg-dark: #0a0e27;
+            --bg-darker: #050810;
+            --card-bg: rgba(15, 23, 42, 0.6);
+            --text: #e2e8f0;
+            --text-dim: #94a3b8;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0a0e27 100%);
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+            z-index: 1000;
+            padding: 0 2rem;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Page Container */
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Home Page */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-dim);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .cta-container {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--bg-dark);
+            box-shadow: 0 10px 40px rgba(0, 217, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(0, 217, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 217, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Features Grid */
+        .features-section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05), rgba(139, 92, 246, 0.05));
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(0, 217, 255, 0.2);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 20px rgba(0, 217, 255, 0.5));
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .feature-card p {
+            color: var(--text-dim);
+            line-height: 1.8;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, transparent, rgba(0, 217, 255, 0.03), transparent);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-card {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+        }
+
+        /* Content Pages */
+        .content-page {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .page-hero {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-hero p {
+            font-size: 1.3rem;
+            color: var(--text-dim);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Project Cards */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--secondary);
+            box-shadow: 0 25px 60px rgba(139, 92, 246, 0.3);
+        }
+
+        .project-header {
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(0, 217, 255, 0.1));
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .project-body {
+            padding: 2.5rem;
+        }
+
+        .project-body p {
+            color: var(--text-dim);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(0, 217, 255, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            border-top: 1px solid rgba(0, 217, 255, 0.1);
+            padding: 4rem 2rem 2rem;
+            margin-top: 6rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 217, 255, 0.1);
+            color: var(--text-dim);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .features-grid, .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 2rem;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu ul li {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-menu a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="stars" id="stars"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="showPage('home')">AstroReach</a>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('resources')">Resources</a></li>
+                <li><a href="#" onclick="showPage('projects')">Projects</a></li>
+                <li><a href="#" onclick="showPage('start')">Start a Club</a></li>
+                <li><a href="#" onclick="showPage('about')">About</a></li>
+                <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+            </ul>
+            <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#" onclick="showPage('home'); toggleMenu()">Home</a></li>
+            <li><a href="#" onclick="showPage('resources'); toggleMenu()">Resources</a></li>
+            <li><a href="#" onclick="showPage('projects'); toggleMenu()">Projects</a></li>
+            <li><a href="#" onclick="showPage('start'); toggleMenu()">Start a Club</a></li>
+            <li><a href="#" onclick="showPage('about'); toggleMenu()">About</a></li>
+            <li><a href="#" onclick="showPage('contact'); toggleMenu()">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Explore the Universe</h1>
+                <p class="hero-subtitle">A student-run global initiative making astronomy accessible through free curriculum, cutting-edge research projects, and a worldwide community of space enthusiasts.</p>
+                <div class="cta-container">
+                    <a href="#" class="btn btn-primary" onclick="showPage('resources')">Access Resources</a>
+                    <a href="#" class="btn btn-secondary" onclick="showPage('start')">Start a Club</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="section-header">
+                <h2 class="section-title">What We Offer</h2>
+                <p class="section-subtitle">Everything you need to explore space science</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌌</div>
+                    <h3>Free Curriculum</h3>
+                    <p>Comprehensive astronomy lessons from basic concepts to advanced astrophysics, designed for independent learning and classroom use.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💻</div>
+                    <h3>Coding Projects</h3>
+                    <p>Python-based simulations, NASA data analysis, orbital mechanics, and interactive visualizations of cosmic phenomena.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔬</div>
+                    <h3>Research Opportunities</h3>
+                    <p>Participate in real citizen science projects, from exoplanet discovery to light pollution mapping and galaxy classification.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Global Network</h3>
+                    <p>Connect with astronomy clubs and students worldwide, collaborate on projects, and share discoveries.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📡</div>
+                    <h3>No Telescope Needed</h3>
+                    <p>Learn astronomy using free software, public datasets, smartphone apps, and naked-eye observations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Club Support</h3>
+                    <p>Complete guides, meeting plans, promotional materials, and ongoing support to launch and run successful astronomy clubs.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <div class="section-header">
+                <h2 class="section-title">Our Impact</h2>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Schools Reached</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Countries</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Students Engaged</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Free Access</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- RESOURCES PAGE -->
+    <div id="resources" class="page">
+        <div class="content-page">
+            <div class="page-hero">
+                <h1>Resources</h1>
+                <p>Comprehensive curriculum, coding tutorials, and educational materials for all skill levels</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Astronomy Curriculum</h3>
+                    <p>Complete lesson plans covering everything from basic celestial mechanics to advanced topics like cosmology, stellar evolution, and observational techniques.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="#" class="btn btn-secondary" style="padding: 0.8rem 2rem;">Request Access</a>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🐍</div>
+                    <h3>Python Tutorials</h3>
+                    <p>Learn to code while exploring space! Build orbital simulations, analyze NASA datasets, create star charts, and visualize astronomical data.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="#" class="btn btn-secondary" style="padding: 0.8rem 2rem;">View Projects</a>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📖</div>
+                    <h3>Study Guides</h3>
+                    <p>Comprehensive guides covering telescope use, astrophotography, constellation identification, and understanding celestial coordinates.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="#" class="btn btn-secondary" style="padding: 0.8rem 2rem;">Download</a>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎥</div>
+                    <h3>Video Tutorials</h3>
+                    <p>Step-by-step video guides for observations, equipment setup, data analysis techniques, and software tutorials.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="#" class="btn btn-secondary" style="padding: 0.8rem 2rem;">Watch Now</a>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🗂️</div>
+                    <h3>Data Resources</h3>
+                    <p>Curated datasets from NASA, ESA, and other space agencies for student research projects and data analysis practice.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="#" class="btn btn-secondary" style="padding: 0.8rem 2rem;">Access Data</a>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3>Activity Sheets</h3>
+                    <p>Printable worksheets, observation logs, and hands-on activities for club meetings and independent study.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="#" class="btn btn-secondary" style="padding: 0.8rem 2rem;">Get Materials</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECTS PAGE -->
+    <div id="projects" class="page">
+        <div class="content-page">
+            <div class="page-hero">
+                <h1>Research Projects</h1>
+                <p>Student-led research initiatives combining astronomy, data science, and citizen science</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🌃</div>
+                        <h3>Light Pollution Mapping</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Use smartphone apps and standardized protocols to measure light pollution in your area. Contribute data to global databases and advocate for dark sky preservation in your community.</p>
+                        <div class="project-tags">
+                            <span class="tag">Citizen Science</span>
+                            <span class="tag">Environmental</span>
+                            <span class="tag">Beginner Friendly</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🪐</div>
+                        <h3>Exoplanet Analysis</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Work with real NASA Kepler and TESS mission data to identify potential exoplanets using transit photometry. Learn professional data analysis techniques used by astronomers.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">NASA Data</span>
+                            <span class="tag">Advanced</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🛰️</div>
+                        <h3>ISS Tracking Project</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Predict International Space Station passes, capture observations and photographs, then analyze orbital mechanics using Python and real-time APIs.</p>
+                        <div class="project-tags">
+                            <span class="tag">Observational</span>
+                            <span class="tag">Coding</span>
+                            <span class="tag">Intermediate</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🌌</div>
+                        <h3>Galaxy Classification</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Join crowdsourced research by classifying galaxy morphologies using real telescope images. Contribute to active scientific studies of galactic evolution.</p>
+                        <div class="project-tags">
+                            <span class="tag">Citizen Science</span>
+                            <span class="tag">Research</span>
+                            <span class="tag">All Levels</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">☀️</div>
+                        <h3>Solar Observation</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Track sunspots, analyze solar cycles, and understand space weather impacts on Earth using safe observation methods and online solar telescopes.</p>
+                        <div class="project-tags">
+                            <span class="tag">Observational</span>
+                            <span class="tag">Long-term</span>
+                            <span class="tag">Intermediate</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🔭</div>
+                        <h3>N-Body Simulations</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Build interactive simulations in Python to model planetary orbits, satellite trajectories, and gravitational interactions. Visualize complex celestial mechanics.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Physics</span>
+                            <span class="tag">Advanced</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- START A CLUB PAGE -->
+    <div id="start" class="page">
+        <div class="content-page">
+            <div class="page-hero">
+                <h1>Start an Astronomy Club</h1>
+                <p>Everything you need to launch a successful astronomy club at your school</p>
+            </div>
+            <div style="max-width: 900px; margin: 3rem auto; text-align: center;">
+                <h2 style="font-size: 2rem; margin-bottom: 2rem; color: var(--primary);">We Provide Complete Support</h2>
+                <div style="text-align: left; background: var(--card-bg); padding: 3rem; border-radius: 20px; border: 1px solid rgba(0, 217, 255, 0.1);">
+                    <h3 style="color: var(--accent); margin-bottom: 1rem;">📦 What You'll Receive:</h3>
+                    <ul style="color: var(--text-
