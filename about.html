@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | AstroReach</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="stars" id="stars"></div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="index.html">AstroReach</a></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="join.html">Join Us</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+            <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="join.html">Join Us</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="admin.html">Admin</a></li>
+        </ul>
+    </div>
+
+    <div class="content-page">
+        <div class="page-hero">
+            <h1>About AstroReach</h1>
+            <p>Our mission, story, and global community</p>
+        </div>
+        
+        <!-- MEMBER SHOWCASE SECTION -->
+        <section class="members-section">
+            <div class="section-header">
+                <h2 class="section-title">Our Community</h2>
+                <p class="section-subtitle">Meet our members from around the world</p>
+                <div class="member-count-display">
+                    <span id="aboutMemberCount">0</span> members and counting
+                </div>
+            </div>
+            <div id="memberShowcase" class="member-grid">
+                <p style="text-align: center; color: var(--text-dim); padding: 2rem;">
+                    No members yet. Be the first to join!
+                </p>
+            </div>
+        </section>
+
+        <!-- ADD MORE CONTENT HERE -->
+        <div class="content-section">
+            <p style="text-align: center; color: var(--text-dim); padding: 4rem 2rem;">
+                More about our story and mission coming soon!
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 AstroReach. Making astronomy accessible to all.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
