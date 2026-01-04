@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Us | AstroReach</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="stars" id="stars"></div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="index.html">AstroReach</a></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="join.html" class="active">Join Us</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+            <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="join.html">Join Us</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="admin.html">Admin</a></li>
+        </ul>
+    </div>
+
+    <div class="content-page">
+        <div class="page-hero">
+            <h1>Join AstroReach</h1>
+            <p>Become part of our global astronomy community</p>
+        </div>
+        <div class="signup-container">
+            <div class="success-message" id="successMessage">
+                ✨ Welcome to AstroReach! You've been successfully added to our community.
+            </div>
+            <form id="signupForm" onsubmit="submitSignup(event)">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="fullName" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" id="email" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>School/Organization</label>
+                    <input type="text" id="school" placeholder="Your school or organization">
+                </div>
+                <div class="form-group">
+                    <label>Country *</label>
+                    <input type="text" id="country" placeholder="United States" required>
+                </div>
+                <div class="form-group">
+                    <label>Interest Level *</label>
+                    <select id="interest" required>
+                        <option value="">Select one...</option>
+                        <option value="beginner">Beginner - Just starting</option>
+                        <option value="intermediate">Intermediate - Some experience</option>
+                        <option value="advanced">Advanced - Experienced in astronomy</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>What interests you most? (Optional)</label>
+                    <textarea id="interests" placeholder="Tell us what you're excited to learn about..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Join AstroReach</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 AstroReach. Making astronomy accessible to all.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
