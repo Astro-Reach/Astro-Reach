@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ 'index.html': `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,7 +19,6 @@
                 <li><a href="resources.html">Resources</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="admin.html">Admin</a></li>
             </ul>
             <button class="menu-btn" onclick="toggleMenu()">☰</button>
         </div>
@@ -32,7 +31,6 @@
             <li><a href="resources.html">Resources</a></li>
             <li><a href="projects.html">Projects</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="admin.html">Admin</a></li>
         </ul>
     </div>
 
@@ -92,11 +90,11 @@
         </div>
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-number">50+</div>
+                <div class="stat-number" id="schoolCount">0</div>
                 <div class="stat-label">Schools Reached</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">15+</div>
+                <div class="stat-number" id="countryCount">0</div>
                 <div class="stat-label">Countries</div>
             </div>
             <div class="stat-card">
@@ -112,6 +110,11 @@
 
     <footer>
         <div class="footer-content">
+            <div class="footer-links">
+                <a href="mailto:contact@astroreach.org">Contact Us</a>
+                <a href="https://github.com/yourusername/astroreach" target="_blank">GitHub</a>
+                <a href="join.html">Join Community</a>
+            </div>
             <p>&copy; 2026 AstroReach. Making astronomy accessible to all.</p>
         </div>
     </footer>
