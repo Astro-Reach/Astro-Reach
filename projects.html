@@ -9,7 +9,6 @@
 <body>
     <div class="bg-animation"></div>
     <div class="stars" id="stars"></div>
-
     <nav>
         <div class="nav-container">
             <div class="logo"><a href="index.html">AstroReach</a></div>
@@ -19,12 +18,10 @@
                 <li><a href="resources.html">Resources</a></li>
                 <li><a href="projects.html" class="active">Projects</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="admin.html">Admin</a></li>
             </ul>
             <button class="menu-btn" onclick="toggleMenu()">☰</button>
         </div>
     </nav>
-
     <div class="mobile-menu" id="mobileMenu">
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -32,30 +29,227 @@
             <li><a href="resources.html">Resources</a></li>
             <li><a href="projects.html">Projects</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="admin.html">Admin</a></li>
         </ul>
     </div>
-
     <div class="content-page">
         <div class="page-hero">
             <h1>Research Projects</h1>
             <p>Student-led research initiatives and citizen science opportunities</p>
         </div>
         
-        <!-- ADD YOUR CONTENT HERE -->
-        <div class="content-section">
-            <p style="text-align: center; color: var(--text-dim); padding: 4rem 2rem;">
-                Projects coming soon! This page will showcase student research and ongoing initiatives.
-            </p>
+        <div class="projects-container">
+            <section class="project-section">
+                <h2>🔬 Active Research Projects</h2>
+                <div class="project-grid">
+                    <div class="project-card featured">
+                        <div class="project-status">Active</div>
+                        <h3>Exoplanet Transit Detection</h3>
+                        <p>Analyze light curves from the TESS mission to identify potential exoplanet candidates. Students learn data analysis while contributing to real science.</p>
+                        <div class="project-tags">
+                            <span>Data Analysis</span>
+                            <span>Python</span>
+                            <span>NASA Data</span>
+                        </div>
+                        <a href="#" class="project-link">Join Project →</a>
+                    </div>
+                    
+                    <div class="project-card featured">
+                        <div class="project-status">Active</div>
+                        <h3>Light Pollution Mapping</h3>
+                        <p>Help create a global map of light pollution by submitting sky brightness measurements from your location using smartphone apps.</p>
+                        <div class="project-tags">
+                            <span>Observation</span>
+                            <span>Environmental</span>
+                            <span>Mobile Apps</span>
+                        </div>
+                        <a href="#" class="project-link">Join Project →</a>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-status">Active</div>
+                        <h3>Meteor Shower Analysis</h3>
+                        <p>Track and record meteor activity during major showers. Contribute to understanding meteor stream dynamics.</p>
+                        <div class="project-tags">
+                            <span>Observation</span>
+                            <span>Data Collection</span>
+                        </div>
+                        <a href="#" class="project-link">Join Project →</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2>🌍 Citizen Science Partnerships</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <h3>Galaxy Zoo</h3>
+                        <p>Classify galaxy shapes and contribute to our understanding of galaxy evolution</p>
+                        <a href="https://www.galaxyzoo.org" target="_blank" class="project-link">Participate →</a>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3>Planet Hunters TESS</h3>
+                        <p>Search for exoplanets in NASA's TESS data</p>
+                        <a href="https://www.zooniverse.org/projects/nora-dot-eisner/planet-hunters-tess" target="_blank" class="project-link">Participate →</a>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3>Globe at Night</h3>
+                        <p>Report sky brightness to track light pollution worldwide</p>
+                        <a href="https://www.globeatnight.org" target="_blank" class="project-link">Participate →</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2>💡 Upcoming Project Ideas</h2>
+                <div class="ideas-list">
+                    <div class="idea-card">
+                        <h3>🛰️ Satellite Tracking Network</h3>
+                        <p>Build a global network of satellite observers to track ISS passes and satellite reentries</p>
+                    </div>
+                    <div class="idea-card">
+                        <h3>☀️ Solar Activity Monitoring</h3>
+                        <p>Track sunspot numbers and solar activity using safe solar observation techniques</p>
+                    </div>
+                    <div class="idea-card">
+                        <h3>🌙 Lunar Impact Flash Detection</h3>
+                        <p>Monitor the Moon for meteoroid impact flashes during peak meteor showers</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cta-section">
+                <h2>Have a Project Idea?</h2>
+                <p>We're always looking for new research opportunities. Share your ideas with our community!</p>
+                <a href="mailto:projects@astroreach.org" class="btn btn-primary">Submit Project Idea</a>
+            </section>
         </div>
     </div>
-
     <footer>
         <div class="footer-content">
+            <div class="footer-links">
+                <a href="mailto:contact@astroreach.org">Contact Us</a>
+                <a href="https://github.com/yourusername/astroreach" target="_blank">GitHub</a>
+                <a href="join.html">Join Community</a>
+            </div>
             <p>&copy; 2026 AstroReach. Making astronomy accessible to all.</p>
         </div>
     </footer>
+    <script src="script.js"></script>
+</body>
+</html>`,
 
+    'about.html': `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | AstroReach</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="stars" id="stars"></div>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="index.html">AstroReach</a></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="join.html">Join Us</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+            </ul>
+            <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="join.html">Join Us</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </div>
+    <div class="content-page">
+        <div class="page-hero">
+            <h1>About AstroReach</h1>
+            <p>Our mission, story, and global community</p>
+        </div>
+        
+        <section class="about-content">
+            <div class="about-section">
+                <h2>Our Mission</h2>
+                <p>AstroReach was founded on a simple belief: astronomy should be accessible to everyone, regardless of location, resources, or background. We're a student-run initiative working to break down barriers to astronomy education and create a global community of space enthusiasts.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>What Makes Us Different</h2>
+                <div class="features-grid">
+                    <div class="about-feature">
+                        <h3>🎓 Student-Led</h3>
+                        <p>Created by students, for students. We understand the challenges learners face and design resources accordingly.</p>
+                    </div>
+                    <div class="about-feature">
+                        <h3>🆓 Completely Free</h3>
+                        <p>No paywalls, no premium tiers. All our resources are freely available to anyone, anywhere.</p>
+                    </div>
+                    <div class="about-feature">
+                        <h3>🌐 Global Community</h3>
+                        <p>Members from over <span id="aboutCountryCount">15</span> countries collaborating and learning together.</p>
+                    </div>
+                    <div class="about-feature">
+                        <h3>🔬 Real Science</h3>
+                        <p>Engage in actual research projects and citizen science initiatives that contribute to our understanding of the universe.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2>Our Story</h2>
+                <p>AstroReach began as a small astronomy club and grew into a global initiative. What started with a handful of students sharing telescope views has evolved into a comprehensive platform serving thousands of learners worldwide. Our journey proves that passion and dedication can create meaningful change in STEM education.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>Our Impact</h2>
+                <div class="impact-stats">
+                    <div class="impact-stat">
+                        <div class="impact-number" id="aboutMemberCount">0</div>
+                        <div class="impact-label">Active Members</div>
+                    </div>
+                    <div class="impact-stat">
+                        <div class="impact-number" id="aboutSchoolCount">0</div>
+                        <div class="impact-label">Schools & Organizations</div>
+                    </div>
+                    <div class="impact-stat">
+                        <div class="impact-number" id="aboutCountryStat">0</div>
+                        <div class="impact-label">Countries Reached</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2>Get Involved</h2>
+                <p>Whether you're a student, educator, or astronomy enthusiast, there's a place for you in AstroReach. Join our community, contribute to projects, or help us expand our resources.</p>
+                <div class="cta-buttons">
+                    <a href="join.html" class="btn btn-primary">Join Our Community</a>
+                    <a href="mailto:contact@astroreach.org" class="btn btn-secondary">Contact Us</a>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="mailto:contact@astroreach.org">Contact Us</a>
+                <a href="https://github.com/yourusername/astroreach" target="_blank">GitHub</a>
+                <a href="join.html">Join Community</a>
+            </div>
+            <p>&copy; 2026 AstroReach. Making astronomy accessible to all.</p>
+        </div>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
