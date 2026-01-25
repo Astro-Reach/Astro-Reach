@@ -9,7 +9,6 @@
 <body>
     <div class="bg-animation"></div>
     <div class="stars" id="stars"></div>
-
     <nav>
         <div class="nav-container">
             <div class="logo"><a href="index.html">AstroReach</a></div>
@@ -19,12 +18,10 @@
                 <li><a href="resources.html">Resources</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="about.html" class="active">About</a></li>
-                <li><a href="admin.html">Admin</a></li>
             </ul>
             <button class="menu-btn" onclick="toggleMenu()">☰</button>
         </div>
     </nav>
-
     <div class="mobile-menu" id="mobileMenu">
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -32,46 +29,85 @@
             <li><a href="resources.html">Resources</a></li>
             <li><a href="projects.html">Projects</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="admin.html">Admin</a></li>
         </ul>
     </div>
-
     <div class="content-page">
         <div class="page-hero">
             <h1>About AstroReach</h1>
             <p>Our mission, story, and global community</p>
         </div>
         
-        <!-- MEMBER SHOWCASE SECTION -->
-        <section class="members-section">
-            <div class="section-header">
-                <h2 class="section-title">Our Community</h2>
-                <p class="section-subtitle">Meet our members from around the world</p>
-                <div class="member-count-display">
-                    <span id="aboutMemberCount">0</span> members and counting
+        <section class="about-content">
+            <div class="about-section">
+                <h2>Our Mission</h2>
+                <p>AstroReach was founded on a simple belief: astronomy should be accessible to everyone, regardless of location, resources, or background. We're a student-run initiative working to break down barriers to astronomy education and create a global community of space enthusiasts.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>What Makes Us Different</h2>
+                <div class="features-grid">
+                    <div class="about-feature">
+                        <h3>🎓 Student-Led</h3>
+                        <p>Created by students, for students. We understand the challenges learners face and design resources accordingly.</p>
+                    </div>
+                    <div class="about-feature">
+                        <h3>🆓 Completely Free</h3>
+                        <p>No paywalls, no premium tiers. All our resources are freely available to anyone, anywhere.</p>
+                    </div>
+                    <div class="about-feature">
+                        <h3>🌐 Global Community</h3>
+                        <p>Members from over <span id="aboutCountryCount">15</span> countries collaborating and learning together.</p>
+                    </div>
+                    <div class="about-feature">
+                        <h3>🔬 Real Science</h3>
+                        <p>Engage in actual research projects and citizen science initiatives that contribute to our understanding of the universe.</p>
+                    </div>
                 </div>
             </div>
-            <div id="memberShowcase" class="member-grid">
-                <p style="text-align: center; color: var(--text-dim); padding: 2rem;">
-                    No members yet. Be the first to join!
-                </p>
+
+            <div class="about-section">
+                <h2>Our Story</h2>
+                <p>AstroReach began as a small astronomy club and grew into a global initiative. What started with a handful of students sharing telescope views has evolved into a comprehensive platform serving thousands of learners worldwide. Our journey proves that passion and dedication can create meaningful change in STEM education.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>Our Impact</h2>
+                <div class="impact-stats">
+                    <div class="impact-stat">
+                        <div class="impact-number" id="aboutMemberCount">0</div>
+                        <div class="impact-label">Active Members</div>
+                    </div>
+                    <div class="impact-stat">
+                        <div class="impact-number" id="aboutSchoolCount">0</div>
+                        <div class="impact-label">Schools & Organizations</div>
+                    </div>
+                    <div class="impact-stat">
+                        <div class="impact-number" id="aboutCountryStat">0</div>
+                        <div class="impact-label">Countries Reached</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2>Get Involved</h2>
+                <p>Whether you're a student, educator, or astronomy enthusiast, there's a place for you in AstroReach. Join our community, contribute to projects, or help us expand our resources.</p>
+                <div class="cta-buttons">
+                    <a href="join.html" class="btn btn-primary">Join Our Community</a>
+                    <a href="mailto:contact@astroreach.org" class="btn btn-secondary">Contact Us</a>
+                </div>
             </div>
         </section>
-
-        <!-- ADD MORE CONTENT HERE -->
-        <div class="content-section">
-            <p style="text-align: center; color: var(--text-dim); padding: 4rem 2rem;">
-                More about our story and mission coming soon!
-            </p>
-        </div>
     </div>
-
     <footer>
         <div class="footer-content">
+            <div class="footer-links">
+                <a href="mailto:contact@astroreach.org">Contact Us</a>
+                <a href="https://github.com/yourusername/astroreach" target="_blank">GitHub</a>
+                <a href="join.html">Join Community</a>
+            </div>
             <p>&copy; 2026 AstroReach. Making astronomy accessible to all.</p>
         </div>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
